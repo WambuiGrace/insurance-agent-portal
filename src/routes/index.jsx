@@ -7,6 +7,7 @@ import ForgotPasswordPage from '@/pages/auth/ForgotPasswordPage'
 import DashboardPage from '@/pages/dashboard/DashboardPage'
 import ClientsPage from '@/pages/clients/ClientsPage'
 import ClientDetailPage from '@/pages/clients/ClientDetailPage'
+import AddClientPage from '@/pages/clients/AddClientPage'
 import RenewalsPage from '@/pages/renewals/RenewalsPage'
 import PerformancePage from '@/pages/performance/PerformancePage'
 import NotificationsPage from '@/pages/notifications/NotificationsPage'
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
         children: [
           { path: ROUTES.DASHBOARD, element: <DashboardPage /> },
           { path: ROUTES.CLIENTS, element: <ClientsPage /> },
+          { path: `${ROUTES.CLIENTS}/new`, element: <AddClientPage /> },
           { path: `${ROUTES.CLIENTS}/:id`, element: <ClientDetailPage /> },
           { path: ROUTES.RENEWALS, element: <RenewalsPage /> },
           { path: ROUTES.PERFORMANCE, element: <PerformancePage /> },
