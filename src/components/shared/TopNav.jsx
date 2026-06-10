@@ -23,6 +23,9 @@ export default function TopNav() {
   const navigate = useNavigate()
   const { theme } = useSelector((state) => state.ui)
   const { user } = useSelector((state) => state.auth)
+  const unreadCount = useSelector((state) =>
+    state.notifications.notifications.filter((n) => !n.read && !n.dismissed).length
+  )
 
   const [profileOpen, setProfileOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
@@ -98,10 +101,11 @@ export default function TopNav() {
           aria-label="View notifications"
         >
           <Bell className="h-[18px] w-[18px]" />
-          {/* Unread badge — will be driven by state once Notifications module is built */}
-          <span className="absolute right-1.5 top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold leading-none text-white">
-            3
-          </span>
+          {unreadCount > 0 && (
+            <span className="absolute right-1 top-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold leading-none text-white">
+              {unreadCount > 99 ? '99+' : unreadCount}
+            </span>
+          )}
         </button>
 
         {/* Separator */}
